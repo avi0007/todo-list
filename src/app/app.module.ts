@@ -9,6 +9,7 @@ import { LoginComponent } from './component/login/login.component';
 import { RegistrationComponent } from './component/registration/registration.component';
 import { EqualValidatorDirective } from './directives/equal-validator.directive';
 import {UserService} from "./services/user.service";
+import {Router, RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {UserService} from "./services/user.service";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

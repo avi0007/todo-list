@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../../services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSuccess = false;
 
-  constructor() { }
+  constructor(private userService: UserService,
+              private router:Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup(
@@ -29,6 +32,15 @@ export class LoginComponent implements OnInit {
         username: this.loginForm.get('username').value,
         password: this.loginForm.get('password').value,
       };
+
+      this.userService.loginUser(loginData).subscribe(
+        (user) => {
+          console.log(user);;
+          if(user.status){
+            sessionStorage.setItem('sessionnId', user.activeSessionId);
+          }
+        }
+      );
     }
   }
 

@@ -15,7 +15,7 @@ export class UserService {
   }
 
   loginUser(user){
-    return this.http.post(this.apiUrl + 'user', user, {withCredentials: true}).map(res =>  res.json());
+    return this.http.post(this.apiUrl + 'user/auth', user, {withCredentials: true}).map(res =>  res.json());
   }
 
 }
