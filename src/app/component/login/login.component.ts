@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
       this.userService.loginUser(loginData).subscribe(
         (user) => {
-          console.log(user);;
+          console.log(user);
           if(user.status){
             sessionStorage.setItem('sessionnId', user.activeSessionId);
           }
